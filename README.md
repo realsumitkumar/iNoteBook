@@ -1,72 +1,112 @@
-# Getting Started with Create React App
+# iNotebook
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+iNotebook is a web application built using React for the front-end and Express for the back-end. It provides a platform for users to create, manage, and organize their notes effectively. Users can register, log in, and perform various operations such as creating, updating, and deleting notes.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+To run the iNotebook project locally, follow these steps:
 
-### `npm start`
+1. Clone the repository:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```shell
+git clone <repository-url>
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Navigate to the project directory:
 
-### `npm test`
+```shell
+cd iNotebook
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Install the dependencies for the front-end:
 
-### `npm run build`
+```shell
+cd frontend
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Install the dependencies for the back-end:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```shell
+cd ../backend
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Start the development server for the front-end:
 
-### `npm run eject`
+```shell
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+6. Start the development server for the back-end:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```shell
+npm run dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+7. Open your web browser and access the application at [http://localhost:3000](http://localhost:3000).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Project Structure
 
-## Learn More
+The project structure is as follows:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `frontend`: Contains the front-end code built with React.
+- `backend`: Contains the back-end code built with Express.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Front-end
 
-### Code Splitting
+The front-end of the iNotebook application is built using React. Here is an overview of the key files and folders in the `frontend` directory:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `App.js`: The main component that serves as the entry point of the application. It handles the routing and renders other components based on the current URL.
+- `Components/`: Contains various reusable components used in the application, such as `Navbar`, `Home`, `About`, `Alert`, `Login`, and `Signup`.
+- `context/`: Contains the React context related to notes, including the `NoteState` component that provides the state and actions related to notes.
+- `App.css`: CSS styles specific to the `App` component.
 
-### Analyzing the Bundle Size
+## Back-end
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The back-end of the iNotebook application is built using Express. Here is an overview of the key files and folders in the `backend` directory:
 
-### Making a Progressive Web App
+- `routes/auth.js`: Contains the routes related to user authentication, including creating a user and logging in.
+- `routes/notes.js`: Contains the routes related to notes, including fetching all notes, adding a new note, updating a note, and deleting a note.
+- `middleware/fetchuser.js`: Middleware function to fetch the logged-in user based on the provided JSON web token (JWT).
+- `models/User.js`: Defines the user schema for storing user information in the database.
+- `models/Note.js`: Defines the note schema for storing note information in the database.
+- `index.js`: The main entry point of the back-end application, sets up the Express server and connects to the database.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Dependencies
 
-### Advanced Configuration
+Here are some of the key dependencies used in the iNotebook application:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Front-end Dependencies
 
-### Deployment
+- `react-router-dom`: Used for routing within the React application.
+- `axios`: Used for making HTTP requests to the back-end API.
+- `react-toastify`: Used for displaying toast notifications.
+- `react-bootstrap`: Used for styling components with pre-defined Bootstrap styles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Back-end Dependencies
 
-### `npm run build` fails to minify
+- `express`: Fast, unopinionated, minimalist web framework for Node.js.
+- `mongoose`: MongoDB object modeling tool used for connecting to and interacting with the MongoDB database.
+- `bcryptjs`: Library for hashing passwords and comparing hashed passwords.
+- `jsonwebtoken`: JSON Web Token library for generating and verifying tokens.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# iNoteBook" 
-"# iNoteBook" 
+## API Endpoints
+
+The iNotebook back-end provides the following API endpoints:
+
+- `POST /api/auth/createuser`: Creates a new user.
+-
+
+ `POST /api/auth/login`: Authenticates a user and returns a JSON web token (JWT) for accessing protected routes.
+- `POST /api/auth/getuser`: Retrieves the details of the logged-in user.
+- `GET /api/notes/fetchallnotes`: Retrieves all the notes for the logged-in user.
+- `POST /api/notes/addnote`: Adds a new note for the logged-in user.
+- `PUT /api/notes/updatenote/:id`: Updates an existing note for the logged-in user.
+- `DELETE /api/notes/deletenote/:id`: Deletes an existing note for the logged-in user.
+
+Note: To access the protected routes, include the JWT in the Authorization header of the request as follows: `Bearer <jwt-token>`.
+
+---
+
+This is a basic overview of the iNotebook project. Feel free to explore the code further and customize it according to your requirements. If you have any questions or need further assistance, please don't hesitate to ask.
